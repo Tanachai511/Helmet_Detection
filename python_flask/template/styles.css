@@ -1,0 +1,18 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav{
+    padding: 1rem;
+    background-color: #333;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo a {
+    font-size: 2rem;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
