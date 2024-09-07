@@ -4,7 +4,7 @@ from datetime import datetime
 
 app = Flask(__name__, template_folder='template')
 # ใส่ path ของ model ของเรา
-pred = HELMET_DETECTION("runs/detect/train/weights/best.pt")
+pred = HELMET_DETECTION("runs/detect/train/weights/best.onnx")
 
 @app.route('/public/<path:path>')
 def send_report(path):
