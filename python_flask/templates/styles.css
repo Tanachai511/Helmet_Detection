@@ -1,0 +1,228 @@
+/* ตั้งค่ารีเซ็ต margin, padding และ box-sizing สำหรับทุกองค์ประกอบ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* การตกแต่งแถบนำทาง (navigation) */
+nav {
+    padding: 1rem;
+    background-color: #ffffff; /* สีน้ำเงินเข้ม */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2); /* เพิ่มเงาเพื่อสร้างมิติ */
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1); /* เส้นขอบล่างบางๆ เพื่อเน้นมิติ */
+    position: sticky; /* ทำให้แถบนำทางติดอยู่ด้านบน */
+    top: 0;
+    z-index: 1000;
+}
+
+
+/* การตกแต่งโลโก้ */
+.logo a {
+    font-size: 2rem;
+    background: linear-gradient(135deg, #46A6FF, #7E3299); /* ไล่สีจากน้ำเงินเข้มไปฟ้าอ่อน */
+    -webkit-background-clip: text; /* ทำให้การไล่สีใช้กับตัวอักษร */
+    -webkit-text-fill-color: transparent; /* ทำให้พื้นหลังของตัวอักษรโปร่งใส */
+    text-decoration: none;
+    font-weight: bold; /* เน้นโลโก้ */
+}
+
+
+/* การตกแต่งส่วน section */
+section {
+    padding: 50px 10%;
+    background: linear-gradient(135deg, #b1f4f474, #ffffff); /* ไล่สีฟ้าอ่อนไปสีขาว */
+}
+
+/* การตกแต่งส่วน home */
+.home {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.home-img img {
+    width: 100%;
+    border-radius: 1rem;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้กับรูปภาพ */
+    transition: transform 0.3s ease; /* เพิ่มเอฟเฟกต์ซูมเมื่อ hover */
+}
+
+.home-img img:hover {
+    transform: scale(1.05); /* ซูมเมื่อ hover */
+}
+
+.home-text h1 {
+    font-size: 60px;
+    color: #000000; /* สีน้ำเงินเข้ม */
+    line-height: 1.2; /* เพิ่มการอ่านง่าย */
+}
+
+.home-text h2 {
+    font-size: 46px;
+    margin: 1rem 0;
+    color: #000000; /* สีน้ำเงินปานกลาง */
+}
+
+/* ปรับแต่งปุ่ม */
+.btn-container {
+    display: flex;
+    justify-content: center; /* จัดปุ่มให้อยู่กึ่งกลางหน้าจอ */
+    align-items: center;
+    gap: 20px; /* เพิ่มช่องว่างระหว่างปุ่ม */
+    margin-top: 50px;
+}
+
+/* การตกแต่งปุ่มคอนเทนเนอร์ */
+.btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #ffffff, #b1f4f474); /* ไล่สีฟ้าอ่อนไปสีขาว */
+    padding: 20px;
+    border-radius: 15px;
+    width: 300px; /* ปรับขนาดให้ปุ่มเท่ากัน */
+    text-align: center;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+
+/* การตกแต่งฟอร์ม */
+.btn-1 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px; /* ระยะห่างระหว่างองค์ประกอบ */
+    padding: 20px;
+    background: linear-gradient(135deg, #ffffff, #d4fbfb74); /* ไล่สีฟ้าอ่อนไปสีขาว */
+    border-radius: 10px;
+    width: 100%;
+}
+
+/* การตกแต่ง input[type="file"] */
+.btn-1 input[type="file"] {
+    background-color: #ffffff; /* พื้นหลังสีขาว */
+    border: 2px dashed #0077b6; /* ขอบเส้นประสีน้ำเงิน */
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #0077b6; /* ข้อความสีน้ำเงิน */
+}
+
+/* การตกแต่ง input[type="submit"] */
+.btn-1 input[type="submit"] {
+    background: linear-gradient(135deg, #665AE8, #46A6FF); /* ไล่สีจากน้ำเงินเข้มไปน้ำเงินปานกลาง */
+    color: #ffffff; /* ข้อความสีขาว */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: background 0.3s ease; /* เพิ่มเอฟเฟกต์ hover */
+}
+
+/* เอฟเฟกต์เมื่อ hover บนปุ่ม submit */
+.btn-1 input[type="submit"]:hover {
+    background: linear-gradient(135deg, #577DF3, #665AE8); /* ไล่สีเข้มขึ้นเมื่อ hover */
+}
+
+
+/* การตกแต่งฟอนต์ */
+body {
+    font-family: 'Poppins', sans-serif; /* ใช้ฟอนต์โมเดิร์น */
+    line-height: 1.6; /* เพิ่มการอ่านง่าย */
+    color: #333; /* สีข้อความพื้นฐาน */
+}
+
+#How-to-use {
+    padding: 50px 100px;
+    text-align: center;
+}
+
+.how-to-use {
+    background: #ffffff;
+}
+
+.how-to-use-heading h1 {
+    font-size: 1.5rem;
+    color: #1F0CFF;
+}
+
+.how-to-use-heading h2 {
+    font-size: 2rem;
+}
+
+.how-to-use-heading p {
+    font-size: 1.2rem;
+}
+
+/* จัดเรียงกล่องสองกล่องเป็นแนวตั้งและรูปภาพอยู่ทางขวา */
+.how-to-use-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.how-to-use-boxes {
+    display: flex;
+    flex-direction: column; /* จัดเรียงกล่องเป็นแนวตั้ง */
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 20px; /* เพิ่ม margin-top เพื่อเลื่อนกล่องลงมา */
+}
+
+.how-to-use-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 390px; /* ความสูงที่ต้องการ */
+    width: 100%; /* ความกว้างที่ต้องการ */
+    object-fit: cover; /* หรือใช้ contain ถ้าต้องการให้รูปภาพไม่ถูกตัด */
+
+}
+
+.how-to-use-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.box {
+    cursor: pointer;
+    width: 500px;
+    height: 120px;
+    margin: 1.4rem 10rem;
+    border-radius: 15px;
+    box-shadow: 5px 12px 41px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.how-to-use-text h1 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.how-to-use-text p {
+    font-size: 1rem;
+}
+
+.box i {
+    font-size: 4rem;
+    margin: 20px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #665AE8, #46A6FF); /* ไล่สีจากน้ำเงินเข้มไปน้ำเงินปานกลาง */
+    border-radius: 40px;
+}
+
+.box:hover {
+    transform: scale(1.05);
+}
