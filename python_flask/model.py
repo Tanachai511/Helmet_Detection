@@ -6,7 +6,7 @@ import torch
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 # โหลดโมเดลที่ดาวน์โหลดมา
-model = YOLO('D:/Helmet_Detection/python_flask/runs/best.pt')
+model = YOLO('D:/Helmet_Detection/python_flask/runs/F190.pt')
 model.to(device)
 
 def detect_helmet_in_image(image_path):
