@@ -47,91 +47,105 @@ section {
     gap: 1.5rem;
 }
 
-.home-img img {
-    width: 100%;
-    border-radius: 1rem;
-    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้กับรูปภาพ */
+.home-img video {
+    width: 110%;
+    border-radius: 2rem;
+    box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.1); /* เพิ่มเงาให้กับวิดีโอ */
     transition: transform 0.3s ease; /* เพิ่มเอฟเฟกต์ซูมเมื่อ hover */
 }
 
-.home-img img:hover {
+.home-img video:hover {
     transform: scale(1.05); /* ซูมเมื่อ hover */
 }
 
+
 .home-text h1 {
-    font-size: 60px;
+    font-size: 64px;
     color: #000000; /* สีน้ำเงินเข้ม */
-    line-height: 1.2; /* เพิ่มการอ่านง่าย */
 }
 
 .home-text h2 {
-    font-size: 46px;
+    font-size: 42px;
     margin: 1rem 0;
     color: #000000; /* สีน้ำเงินปานกลาง */
 }
 
-/* ปรับแต่งปุ่ม */
-.btn-container {
-    display: flex;
-    justify-content: center; /* จัดปุ่มให้อยู่กึ่งกลางหน้าจอ */
-    align-items: center;
-    gap: 20px; /* เพิ่มช่องว่างระหว่างปุ่ม */
-    margin-top: 50px;
-}
 
-/* การตกแต่งปุ่มคอนเทนเนอร์ */
+/* การตกแต่งคอนเทนเนอร์ของปุ่ม */
 .btn {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* จัดเรียงเนื้อหาในแนวตั้ง */
     align-items: center;
-    background: linear-gradient(135deg, #ffffff, #b1f4f474); /* ไล่สีฟ้าอ่อนไปสีขาว */
-    padding: 20px;
+    background: linear-gradient(135deg, #ffffff93, #b1f4f493); /* ไล่สีฟ้าอ่อนไปสีขาว */
+    padding: 0px;
     border-radius: 15px;
-    width: 300px; /* ปรับขนาดให้ปุ่มเท่ากัน */
+    width: 450px; /* กำหนดขนาดกว้างให้เหมาะสม */
+    margin: 15px auto;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* เพิ่มเงาเล็กน้อย */
     text-align: center;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-
-/* การตกแต่งฟอร์ม */
-.btn-1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px; /* ระยะห่างระหว่างองค์ประกอบ */
-    padding: 20px;
-    background: linear-gradient(135deg, #ffffff, #d4fbfb74); /* ไล่สีฟ้าอ่อนไปสีขาว */
-    border-radius: 10px;
-    width: 100%;
-}
+/* การตกแต่งหัวเรื่อง */
+.btn h2 {
+    font-size: 22px; /* ขนาดฟอนต์ของหัวเรื่อง */
+    margin-bottom: 10px; /* เพิ่มช่องว่างระหว่างหัวเรื่องและฟอร์ม */
+    background: linear-gradient(135deg, #46A6FF, #7E3299); /* ไล่สีจากน้ำเงินเข้มไปฟ้าอ่อน */
+    -webkit-background-clip: text; /* ทำให้การไล่สีใช้กับตัวอักษร */
+    -webkit-text-fill-color: transparent; /* ทำให้พื้นหลังของตัวอักษรโปร่งใส */}
 
 /* การตกแต่ง input[type="file"] */
-.btn-1 input[type="file"] {
-    background-color: #ffffff; /* พื้นหลังสีขาว */
+.btn input[type="file"] {
+    background-color: #ffffff;
     border: 2px dashed #0077b6; /* ขอบเส้นประสีน้ำเงิน */
-    padding: 10px;
+    padding: 5px;
     border-radius: 8px;
     font-size: 14px;
     cursor: pointer;
     color: #0077b6; /* ข้อความสีน้ำเงิน */
+    margin-bottom: 10px; /* เพิ่มช่องว่างด้านล่าง input */
 }
 
-/* การตกแต่ง input[type="submit"] */
-.btn-1 input[type="submit"] {
-    background: linear-gradient(135deg, #665AE8, #46A6FF); /* ไล่สีจากน้ำเงินเข้มไปน้ำเงินปานกลาง */
+/* การตกแต่งปุ่ม upload */
+.btn button {
+    background: linear-gradient(135deg, #46A6FF, #665AE8); /* ไล่สีจากฟ้าเข้มน้ำเงิน */
     color: #ffffff; /* ข้อความสีขาว */
     border: none;
-    padding: 10px 20px;
+    padding: 10px 16px;
     border-radius: 8px;
-    font-size: 24px;
+    font-size: 18px; /* ขนาดฟอนต์ของปุ่ม */
     cursor: pointer;
     transition: background 0.3s ease; /* เพิ่มเอฟเฟกต์ hover */
 }
 
-/* เอฟเฟกต์เมื่อ hover บนปุ่ม submit */
-.btn-1 input[type="submit"]:hover {
-    background: linear-gradient(135deg, #577DF3, #665AE8); /* ไล่สีเข้มขึ้นเมื่อ hover */
+/* เอฟเฟกต์เมื่อ hover บนปุ่ม */
+.btn button:hover {
+    background: linear-gradient(135deg, #e39709, #fd0000); /* ไล่สีเข้มขึ้นเมื่อ hover */
 }
+
+/* การตกแต่งลิงก์ Webcam Detection */
+.btn .webcam-link {
+    background: linear-gradient(135deg, #46A6FF, #665AE8); /* ไล่สีเหมือนกับปุ่ม */
+    color: #ffffff; /* ข้อความสีขาว */
+    padding: 10px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+/* เอฟเฟกต์เมื่อ hover บนลิงก์ Webcam Detection */
+.btn .webcam-link:hover {
+    background: linear-gradient(135deg, #e39709, #fd0000); /* ไล่สีเข้มขึ้นเมื่อ hover */
+}
+
+/* การตกแต่งข้อความเพิ่มเติม */
+.btn h3 {
+    margin-top: 20px;
+    font-size: 16px;
+    color: #555555; /* สีเทาเข้มสำหรับข้อความเพิ่มเติม */
+}
+
 
 
 /* การตกแต่งฟอนต์ */

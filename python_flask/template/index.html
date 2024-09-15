@@ -22,33 +22,36 @@
             <h2>ตรวจผู้สวมใส่หมวกกันน็อค ด้วย AI</h2>
             <div class="btn-container">
                 <div class="btn">
-                    <form class="btn-1" action="/success" method="post" enctype="multipart/form-data">
-                        <input type="file" name="file" />
-                        <input type="submit" value="Upload">
+                    <h2>Upload an Image</h2>
+                    <form action="/upload_image" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="file" accept="image/*">
+                        <button type="submit">Upload Image</button>
                     </form>
-                    <h3>หรือแค่วางที่นี่ / Ctrl + V เพื่อวางรูปภาพ</h3>
                 </div>
                 <div class="btn">
-                    <form class="btn-1" action="/success" method="post" enctype="multipart/form-data">
-                        <input type="file" name="file" />
-                        <input type="submit" value="Upload">
+                    <h2>Upload a Video</h2>
+                    <form action="/upload_video" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="file" accept="video/*">
+                        <button type="submit">Upload Video</button>
                     </form>
-                    <h3>หรือแค่วางที่นี่ / Ctrl + V เพื่อวางรูปภาพ</h3>
                 </div>
                 <div class="btn">
-                    <form class="btn-1" action="/success" method="post" enctype="multipart/form-data">
-                        <input type="file" name="file" />
-                        <input type="submit" value="Upload">
-                    </form>
-                    <h3>หรือแค่วางที่นี่ / Ctrl + V เพื่อวางรูปภาพ</h3>
+                    <h2>Webcam Detection</h2>
+                    <a href="/webcam" class="webcam-link">Start Webcam Detection</a>
                 </div>
+                
             </div>
             
 
         </div>
         <div class="home-img">
-            <img src="images/home.png" alt="">
+            <video width="100%" autoplay loop muted>
+                <source src="images/450596137_3785505721772666_8967117101057399585_n.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            
         </div>
+        
     </section>
 
     <section class="how-to-use" id="How-to-use">
