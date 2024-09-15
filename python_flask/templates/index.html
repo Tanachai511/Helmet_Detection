@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helmet Detection</title>
+</head>
+<body>
+    <h1>Helmet Detection</h1>
+
+    <!-- ฟอร์มสำหรับอัปโหลดรูปภาพ -->
+    <h2>Upload an Image</h2>
+    <form action="/upload_image" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*">
+        <button type="submit">Upload Image</button>
+    </form>
+
+    <!-- ฟอร์มสำหรับอัปโหลดวิดีโอ -->
+    <h2>Upload a Video</h2>
+    <form action="/upload_video" method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" accept="video/*">
+        <button type="submit">Upload Video</button>
+    </form>
+
+    <!-- ลิงก์สำหรับเปิดการตรวจจับผ่านเว็บแคม -->
+    <h2>Webcam Detection</h2>
+    <a href="/webcam">Start Webcam Detection</a>
+</body>
+</html>
