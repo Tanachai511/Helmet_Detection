@@ -70,6 +70,15 @@ section {
     color: #000000; /* สีน้ำเงินปานกลาง */
 }
 
+/* ปรับแต่งปุ่ม */
+.btn-container {
+    display: flex;
+    justify-content: center; /* จัดปุ่มให้อยู่กึ่งกลางหน้าจอ */
+    align-items: center;
+    gap: 20px; /* เพิ่มช่องว่างระหว่างปุ่ม */
+    margin-top: 50px;
+}
+
 /* การตกแต่งปุ่มคอนเทนเนอร์ */
 .btn {
     display: flex;
@@ -78,11 +87,11 @@ section {
     background: linear-gradient(135deg, #ffffff, #b1f4f474); /* ไล่สีฟ้าอ่อนไปสีขาว */
     padding: 20px;
     border-radius: 15px;
-    width: 400px;
-    margin: 50px auto;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1); /* เพิ่มเงาเล็กน้อย */
+    width: 300px; /* ปรับขนาดให้ปุ่มเท่ากัน */
     text-align: center;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
 }
+
 
 /* การตกแต่งฟอร์ม */
 .btn-1 {
