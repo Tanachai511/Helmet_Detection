@@ -9,12 +9,25 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = YOLO('D:/Helmet_Detection/python_flask/runs/F190.pt')
 model.to(device)
 
+# ฟังก์ชันปรับขนาด
+def resize_image(image, target_size=(480,480)):
+    return cv2.resize(image, target_size)
+
+# ฟังก์ชันตรวจจับหมวกกันน็อกในรูปภาพ
 def detect_helmet_in_image(image_path):
     # อ่านรูปภาพด้วย OpenCV
     image = cv2.imread(image_path)
-    results = model(image, device='cuda' if torch.cuda.is_available() else 'cpu')
+
+    # ปรับขนาดรูปภาพให้เป็น 640x640
+    resized_image = resize_image(image, target_size=(480, 480))
+
+    # ทำการตรวจจับหมวกกันน็อคด้วย YOLO
+    results = model(resized_image, device='cuda' if torch.cuda.is_available() else 'cpu')
+
+    # บันทึกผลลัพธ์
     output_image_path = f"static/output/detected_{os.path.basename(image_path)}"
-    results[0].save(output_image_path)  
+    results[0].save(output_image_path)  # บันทึกผลลัพธ์หลังจากตรวจจับ
+
     return output_image_path
 
 
@@ -54,23 +67,32 @@ def detect_helmet_in_video(video_path, scale_factor=0.5, process_interval=1):  #
 
     return output_video_path
 
-
 def gen_frames():
     cap = cv2.VideoCapture(0)  # เปิดกล้องเว็บแคม
+    if not cap.isOpened():
+        print("ไม่สามารถเปิดกล้องได้")
+        return  # หยุดฟังก์ชันถ้าไม่สามารถเปิดกล้อง
 
     while True:
         success, frame = cap.read()
         if not success:
-            break
+            print("ไม่สามารถอ่านเฟรมจากกล้องได้")
+            break  # ออกจากลูปถ้าไม่สามารถอ่านเฟรมได้
         else:
-            # ตรวจจับหมวกกันน็อคในเฟรม (ถ้ามี)
-            result = model(frame)
-            annotated_frame = result[0].plot()
+            # ตรวจจับหมวกกันน็อคในเฟรม
+            results = model(frame)
+            annotated_frame = results[0].plot()
 
             # แปลงเฟรมเป็น JPEG
             ret, buffer = cv2.imencode('.jpg', annotated_frame)
+            if not ret:
+                print("ไม่สามารถแปลงเฟรมเป็น JPEG ได้")
+                break
+
             frame = buffer.tobytes()
 
             # ส่งคืนเฟรมแบบสตรีม
             yield (b'--frame\r\n'
                    b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+    
+    cap.release()

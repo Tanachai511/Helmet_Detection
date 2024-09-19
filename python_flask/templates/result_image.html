@@ -3,12 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Helmet Detection Result</title>
+    <title>Helmet Detection</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
 </head>
 <body>
-    <h1>Detection Result</h1>
-    <img src="{{ url_for('static', filename='output/' + image_file) }}" alt="Detected Image">
-    <br>
-    <a href="/">Back to Home</a>
+    <nav>
+        <div class="logo">
+            <a href="#"><i class="fas fa-helmet-safety"></i> </a>
+            <a href="#">Helmet Detection</a>
+        </div>
+    </nav>
+    <section  class="home" id="home">
+        <div class="home-text">
+            <h1>Helmet Detection</h1>
+            <h2>ตรวจผู้สวมใส่หมวกกันน็อค ด้วย AI</h2>
+            <div class="btn-container">
+                <div class="btn">
+                    <form class="btn-1" action="/upload_image" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="file" accept="image/*"/>
+                        <input type="submit" value="Upload">
+                    </form>
+                    <h3>หรือแค่วางที่นี่ / Ctrl + V เพื่อวางรูปภาพ</h3>
+                </div>
+                <div class="btn">
+                    <form class="btn-1" action="/upload_video" method="POST" enctype="multipart/form-data">
+                        <input type="file" name="file" accept="video/*" />
+                        <input type="submit" value="Upload">
+                    </form>
+                    <h3>หรือแค่วางที่นี่ / Ctrl + V เพื่อวางรูปภาพ</h3>
+                </div>
+                <div class="btn">
+                    <form class="btn-1" href="/webcam">
+                        <input type="submit" value="webcam">
+                    </form>
+                    <h3>หรือแค่วางที่นี่ / Ctrl + V เพื่อวางรูปภาพ</h3>
+                </div>
+            </div>
+            
+
+        </div>
+        <div class="home-img">
+                <img src="{{ url_for('static', filename='output/' + image_file) }}" alt="Detected Image">
+        </div>
+    </section>
+
+    <section class="how-to-use" id="How-to-use">
+    <div class="how-to-use-heading">
+        <h1>วิธีการใช้งาน</h1>
+        <h2>ตรวจจับผู้สวมใส่หมวกกันน็อค ด้วย AI Machine Learning YOLOv8</h2>
+        <p>เป็นไลบรารีโอเพ่นซอร์สสำหรับการตรวจจับวัตถุ (object detection) เหมาะสำหรับการพัฒนาระบบตรวจจับหมวกกันน็อก YOLOv8 ทำงานได้รวดเร็วและแม่นยำ ใช้งานง่าย และสามารถปรับแต่งโมเดลให้เหมาะกับงานเฉพาะได้</p>
+    </div>
+    <div class="how-to-use-content">
+        <div class="how-to-use-boxes">
+            <div class="box" id="upload-box">
+                <i class='bx bxs-cloud-download'></i>
+                <div class="how-to-use-text">
+                    <h1>อัปโหลดรูปภาพ</h1>
+                    <p>คลิกอัปโหลดหรือลากรูปภาพที่คุณต้องการลงในช่องอัปโหลด</p>
+                </div>
+            </div>
+            <div class="box" id="ai-detect-box">
+                <i class='bx bx-radar'></i>
+                <div class="how-to-use-text">
+                    <h1>AI ตรวจจับ</h1>
+                    <p>AI จะทำการตรวจผู้ไม่สวมใส่หมวกกันน็อค</p>
+                </div>
+            </div>
+        </div>
+        <div class="how-to-use-img">
+            <img id="dynamic-image" src="../static/images/Screenshot 2024-07-30 235159.png" alt="AI Helmet Detection">
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    <script src="../static/script.js"></script>.
 </body>
 </html>

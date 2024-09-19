@@ -118,12 +118,44 @@ def gen_frames():
 def video_feed():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
+webcam_active = True
+
+def gen_frames():
+    cap = cv2.VideoCapture(0)  # เปิดกล้องเว็บแคม
+    if not cap.isOpened():
+        print("ไม่สามารถเปิดกล้องได้")
+        return  # หยุดฟังก์ชันถ้าไม่สามารถเปิดกล้อง
+
+    while True:
+        success, frame = cap.read()
+        if not success:
+            print("ไม่สามารถอ่านเฟรมจากกล้องได้")
+            break  # ออกจากลูปถ้าไม่สามารถอ่านเฟรมได้
+        else:
+            # ตรวจจับหมวกกันน็อคในเฟรม
+            results = model(frame)
+            annotated_frame = results[0].plot()
+
+            # แปลงเฟรมเป็น JPEG
+            ret, buffer = cv2.imencode('.jpg', annotated_frame)
+            if not ret:
+                print("ไม่สามารถแปลงเฟรมเป็น JPEG ได้")
+                break
+
+            frame = buffer.tobytes()
+
+            # ส่งคืนเฟรมแบบสตรีม
+            yield (b'--frame\r\n'
+                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')
+    
+    cap.release()
 
 @app.route('/stop_webcam')
 def stop_webcam():
     global webcam_active
-    webcam_active = False
+    webcam_active = False  # เปลี่ยนสถานะเพื่อหยุดการสตรีมเว็บแคม
     return redirect(url_for('index'))
+
             
 if __name__ == '__main__':
     app.run(debug=True)
