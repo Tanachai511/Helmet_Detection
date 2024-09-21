@@ -47,13 +47,6 @@ section {
     gap: 1.5rem;
 }
 
-.home-img img {
-    width: 100%;
-    height: auto;
-    border: 2px solid #000; /* ใส่กรอบรอบๆ วิดีโอ */
-    border-radius: 8px; /* ปรับความโค้งของมุมถ้าต้องการ */
-}
-
 .home-img video {
     width: 110%;
     border-radius: 2rem;
@@ -132,24 +125,28 @@ section {
     background: linear-gradient(135deg, #e39709, #fd0000); /* ไล่สีเข้มขึ้นเมื่อ hover */
 }
 
-/* การตกแต่งลิงก์ Webcam Detection */
-.btn .webcam-link {
-    background: linear-gradient(135deg, #46A6FF, #665AE8); /* ไล่สีเหมือนกับปุ่ม */
-    color: #ffffff; /* ข้อความสีขาว */
+
+/* การตกแต่งปุ่ม input[type="button"] */
+.btn input[type="button"] {
+    background: linear-gradient(135deg, #46A6FF, #665AE8); 
+    color: #ffffff;
+    border: none;
     padding: 10px 16px;
     border-radius: 8px;
-    text-decoration: none;
     font-size: 18px;
     cursor: pointer;
     transition: background 0.3s ease;
 }
 
-/* เอฟเฟกต์เมื่อ hover บนลิงก์ Webcam Detection */
-.btn .webcam-link:hover {
-    background: linear-gradient(135deg, #e39709, #fd0000); /* ไล่สีเข้มขึ้นเมื่อ hover */
+/* เอฟเฟกต์เมื่อ hover บนปุ่ม */
+.btn input[type="button"]:hover {
+    background: linear-gradient(135deg, #e39709, #fd0000); 
 }
 
-
+/* การตกแต่งลิงก์ Webcam Detection */
+.btn-1 {
+    text-decoration: none;
+}
 
 
 
@@ -245,3 +242,43 @@ body {
 .box:hover {
     transform: scale(1.05);
 }
+
+.result_image {
+    width: 100%; /* ปรับให้คอนเทนเนอร์กว้าง 100% */
+    max-width: 100%; /* กำหนดขนาดกว้างสุด */
+    overflow: hidden; /* ซ่อนส่วนที่เกินออกจากคอนเทนเนอร์ */
+    margin: 0 auto; /* จัดให้อยู่ตรงกลาง */
+}
+
+.result_image img {
+    width: 100%; /* ปรับให้รูปภาพกว้างเต็ม 100% ของคอนเทนเนอร์ */
+    height: auto; /* รักษาสัดส่วนตามความกว้าง */
+    border-radius: 1rem; /* เพิ่มความโค้งมุมให้รูปภาพ */
+}
+
+
+/* การตกแต่งปุ่ม input[type="button"] */
+.btn-0 input[type="button"] {
+    background: linear-gradient(135deg, #46A6FF, #665AE8); 
+    color: #ffffff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+/* เอฟเฟกต์เมื่อ hover บนปุ่ม */
+.btn-0 input[type="button"]:hover {
+    background: linear-gradient(135deg, #e39709, #fd0000); 
+}
+
+/* การตกแต่งลิงก์ Webcam Detection */
+.btn-1 {
+    text-decoration: none;
+}
+
+
+
+

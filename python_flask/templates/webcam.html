@@ -4,11 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Webcam Detection</title>
+    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <h1>Webcam Detection</h1>
-    <img src="{{ url_for('video_feed') }}" style="width: 100%; height: auto;">
-    <br>
-    <a href="/stop_webcam">Stop Webcam</a>
+    <nav>
+        <div class="logo">
+            <a href="/">Helmet Detection</a>
+        </div>
+    </nav>
+    <div class="home-text" style="text-align: center;">
+        <img src="{{ url_for('video_feed') }}" style="width: 50%; height: auto; margin: 10px auto; display: block;">
+        <div class="btn-0">
+            <a href="/stop_webcam" class="btn-1">
+                <input type="button" value="Stop Webcam">
+            </a>
+        </div>        
+    </div>
+    
+
 </body>
 </html>
