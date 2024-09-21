@@ -98,7 +98,8 @@ section {
     margin-bottom: 10px; /* เพิ่มช่องว่างระหว่างหัวเรื่องและฟอร์ม */
     background: linear-gradient(135deg, #46A6FF, #7E3299); /* ไล่สีจากน้ำเงินเข้มไปฟ้าอ่อน */
     -webkit-background-clip: text; /* ทำให้การไล่สีใช้กับตัวอักษร */
-    -webkit-text-fill-color: transparent; /* ทำให้พื้นหลังของตัวอักษรโปร่งใส */}
+    -webkit-text-fill-color: transparent; /* ทำให้พื้นหลังของตัวอักษรโปร่งใส */
+}
 
 /* การตกแต่ง input[type="file"] */
 .btn input[type="file"] {
@@ -113,6 +114,7 @@ section {
 }
 
 /* การตกแต่งปุ่ม upload */
+.btn input[type="submit"],
 .btn button {
     background: linear-gradient(135deg, #46A6FF, #665AE8); /* ไล่สีจากฟ้าเข้มน้ำเงิน */
     color: #ffffff; /* ข้อความสีขาว */
@@ -125,6 +127,7 @@ section {
 }
 
 /* เอฟเฟกต์เมื่อ hover บนปุ่ม */
+.btn input[type="submit"]:hover,
 .btn button:hover {
     background: linear-gradient(135deg, #e39709, #fd0000); /* ไล่สีเข้มขึ้นเมื่อ hover */
 }
@@ -146,12 +149,7 @@ section {
     background: linear-gradient(135deg, #e39709, #fd0000); /* ไล่สีเข้มขึ้นเมื่อ hover */
 }
 
-/* การตกแต่งข้อความเพิ่มเติม */
-.btn h3 {
-    margin-top: 20px;
-    font-size: 16px;
-    color: #555555; /* สีเทาเข้มสำหรับข้อความเพิ่มเติม */
-}
+
 
 
 
