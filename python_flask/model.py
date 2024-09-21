@@ -9,24 +9,41 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = YOLO('D:/Helmet_Detection/python_flask/runs/F190.pt')
 model.to(device)
 
-# ฟังก์ชันปรับขนาด
-def resize_image(image, target_size=(480,480)):
-    return cv2.resize(image, target_size)
-
 # ฟังก์ชันตรวจจับหมวกกันน็อกในรูปภาพ
 def detect_helmet_in_image(image_path):
     # อ่านรูปภาพด้วย OpenCV
     image = cv2.imread(image_path)
 
-    # ปรับขนาดรูปภาพให้เป็น 640x640
-    resized_image = resize_image(image, target_size=(480, 480))
+    # ตรวจจับหมวกกันน็อก
+    results = model(image, device='cuda' if torch.cuda.is_available() else 'cpu')
 
-    # ทำการตรวจจับหมวกกันน็อคด้วย YOLO
-    results = model(resized_image, device='cuda' if torch.cuda.is_available() else 'cpu')
+    # วาดกรอบตรวจจับใหม่บนเฟรมต้นฉบับ
+    for result in results[0].boxes:
+        bbox = result.xyxy[0].cpu().numpy().astype(int)
+        cls = int(result.cls)
+
+        if cls == 0:
+            color = (0, 255, 0)  # สีเขียวสำหรับ with-helmet
+            label = 'with-helmet'
+        else:
+            color = (0, 0, 255)  # สีแดงสำหรับ without-helmet
+            label = 'without-helmet'
+
+        # วาดกรอบ
+        cv2.rectangle(image, (bbox[0], bbox[1]), (bbox[2], bbox[3]), color, 2)
+
+        # คำนวณขนาดของข้อความ
+        (text_width, text_height), _ = cv2.getTextSize(label, cv2.FONT_HERSHEY_SIMPLEX, 1.5, 3)
+
+        # เพิ่มพื้นหลังสี่เหลี่ยมให้กับข้อความ
+        cv2.rectangle(image, (bbox[0], bbox[1] - text_height - 10), (bbox[0] + text_width, bbox[1]), color, -1)
+
+        # วาดข้อความบนพื้นหลังสี่เหลี่ยม
+        cv2.putText(image, label, (bbox[0], bbox[1] - 5), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (255, 255, 255), 3)  # ข้อความสีขาว
 
     # บันทึกผลลัพธ์
     output_image_path = f"static/output/detected_{os.path.basename(image_path)}"
-    results[0].save(output_image_path)  # บันทึกผลลัพธ์หลังจากตรวจจับ
+    cv2.imwrite(output_image_path, image)  # บันทึกเฟรมที่มีการวาดกรอบใหม่
 
     return output_image_path
 
@@ -64,8 +81,6 @@ def detect_helmet_in_video(video_path, scale_factor=0.5, process_interval=1):  #
 
     cap.release()
     out.release()
-
-    return output_video_path
 
 def gen_frames():
     cap = cv2.VideoCapture(0)  # เปิดกล้องเว็บแคม

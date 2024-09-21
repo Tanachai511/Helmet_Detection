@@ -8,7 +8,6 @@ document.getElementById("upload-box").addEventListener("mouseover", function() {
 });
 
 
-// เพิ่ม event listener ให้กับกล่อง AI ตรวจจับ
 document.getElementById("ai-detect-box").addEventListener("mouseover", function() {
     changeImage('../static/images/home.png'); // รูปใหม่เมื่อ hover AI box
 });
