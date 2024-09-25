@@ -58,7 +58,6 @@ section {
     transform: scale(1.05); /* ซูมเมื่อ hover */
 }
 
-
 .home-text h1 {
     font-size: 64px;
     color: #000000; /* สีน้ำเงินเข้ม */
@@ -210,6 +209,10 @@ body {
     border-radius: 10px;
 }
 
+.how-to-use-heading{
+    margin-bottom: 5rem;
+}
+
 .box {
     cursor: pointer;
     width: 500px;
@@ -255,7 +258,6 @@ body {
     height: auto; /* รักษาสัดส่วนตามความกว้าง */
     border-radius: 1rem; /* เพิ่มความโค้งมุมให้รูปภาพ */
 }
-
 
 /* การตกแต่งปุ่ม input[type="button"] */
 .btn-0 input[type="button"] {
