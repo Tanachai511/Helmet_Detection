@@ -46,6 +46,8 @@
         </div>
         <div class="result_image">
             <img src="{{ url_for('static', filename='output/' + image_file) }}" alt="Detected Image">
+            <p class="helmet-count">จำนวนคนสวมหมวกกันน็อก: <span class="helmet">{{ helmet_count }}</span></p>
+            <p class="without-helmet-count">จำนวนคนไม่สวมหมวกกันน็อก: <span class="without-helmet">{{ without_helmet_count }}</span></p>
         </div>
         
     </section>

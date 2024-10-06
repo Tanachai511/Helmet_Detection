@@ -10,7 +10,7 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-# อัปโหลดและตรวจจับจากรูปภาพ
+#อัปโหลดและตรวจจับจากรูปภาพ
 @app.route('/upload_image', methods=['POST'])
 def upload_image():
     if 'file' not in request.files:
@@ -24,9 +24,12 @@ def upload_image():
     image_path = os.path.join('static/output', file.filename)
     file.save(image_path)
 
-    output_image_path = detect_helmet_in_image(image_path)
+    output_image_path, helmet_count, without_helmet_count = detect_helmet_in_image(image_path)
 
-    return redirect(url_for('show_result', filename=os.path.basename(output_image_path)))
+    return redirect(url_for('show_result', 
+                            filename=os.path.basename(output_image_path),
+                            helmet_count=helmet_count,
+                            without_helmet_count=without_helmet_count))
 
 # อัปโหลดและตรวจจับจากวิดีโอ
 @app.route('/upload_video', methods=['POST'])
@@ -82,10 +85,15 @@ def stream_detected_video(filename, process_interval=2):
 
 @app.route('/result/<filename>')
 def show_result(filename):
+    helmet_count = request.args.get('helmet_count', type=int)
+    without_helmet_count = request.args.get('without_helmet_count', type=int)
+
     if filename.endswith('.mp4'):
         return render_template('result_video.html', video_file=filename)
     else:
-        return render_template('result_image.html', image_file=filename)
+        return render_template('result_image.html', image_file=filename, 
+                               helmet_count=helmet_count, without_helmet_count=without_helmet_count)
+
 
 webcam_active = True
 

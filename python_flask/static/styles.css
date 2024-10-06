@@ -281,6 +281,15 @@ body {
     text-decoration: none;
 }
 
-
-
-
+.result_image p {
+    font-size: 1.5em; /* ปรับขนาดตัวอักษรให้ใหญ่ขึ้น */
+    margin: 0.5em 0;
+}
+.helmet {
+    color: green; /* กำหนดสีเขียวสำหรับคนสวมหมวก */
+    font-weight: bold;
+}
+.without-helmet {
+    color: red; /* กำหนดสีแดงสำหรับคนไม่สวมหมวก */
+    font-weight: bold;
+}
