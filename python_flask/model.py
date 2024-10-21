@@ -9,8 +9,6 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = YOLO('D:/Helmet_Detection/python_flask/runs/F190.pt')
 model.to(device)
 
-
-
 # ฟังก์ชันตรวจจับหมวกกันน็อกในรูปภาพ
 def detect_helmet_in_image(image_path):
     image = cv2.imread(image_path)

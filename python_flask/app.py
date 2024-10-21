@@ -1,35 +1,59 @@
 from flask import Flask, Response, request, render_template, redirect, url_for
 from model import detect_helmet_in_image, detect_helmet_in_video ,model
+from pymongo import MongoClient
 import os
 import cv2
 import torch
 
 app = Flask(__name__)
 
+client = MongoClient('mongodb://localhost:27017/')
+db = client['helmet_detection']  # Database name
+issues_collection = db['issue_reports']  # Collection name
+
 @app.route('/')
 def index():
     return render_template('index.html')
 
+@app.route('/submit_report', methods=['POST'])
+def submit_report():
+    image_file = request.form.get('image_file')
+    is_incorrect = request.form.get('is_incorrect') == 'on'
+    comment = request.form.get('comment')
+
+    issue_report = {
+        'image_file': image_file,
+        'is_incorrect': is_incorrect,
+        'comment': comment
+    }
+
+    # เพิ่มข้อมูลลงในคอลเลกชัน 'issues'
+    issues_collection.insert_one(issue_report)
+
+    return redirect(url_for('show_result', filename=image_file))
+
 #อัปโหลดและตรวจจับจากรูปภาพ
+from flask import render_template
+
+# ในฟังก์ชันตรวจจับหมวกกันน็อก
 @app.route('/upload_image', methods=['POST'])
 def upload_image():
     if 'file' not in request.files:
         return 'No file uploaded', 400
 
     file = request.files['file']
-    
     if file.filename == '':
         return 'No selected file', 400
-    
+
     image_path = os.path.join('static/output', file.filename)
     file.save(image_path)
 
     output_image_path, helmet_count, without_helmet_count = detect_helmet_in_image(image_path)
 
-    return redirect(url_for('show_result', 
-                            filename=os.path.basename(output_image_path),
-                            helmet_count=helmet_count,
-                            without_helmet_count=without_helmet_count))
+    return render_template('result_image.html', 
+                           image_file=os.path.basename(output_image_path), 
+                           helmet_count=helmet_count, 
+                           without_helmet_count=without_helmet_count)
 
 # อัปโหลดและตรวจจับจากวิดีโอ
 @app.route('/upload_video', methods=['POST'])

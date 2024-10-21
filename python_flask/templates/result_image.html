@@ -48,7 +48,26 @@
             <img src="{{ url_for('static', filename='output/' + image_file) }}" alt="Detected Image">
             <p class="helmet-count">จำนวนคนสวมหมวกกันน็อก: <span class="helmet">{{ helmet_count }}</span></p>
             <p class="without-helmet-count">จำนวนคนไม่สวมหมวกกันน็อก: <span class="without-helmet">{{ without_helmet_count }}</span></p>
+        </div>  
+        <div class="comment-section">
+            <h3>Report an Issue</h3>
+            <form action="/submit_report" method="POST">
+                <input type="hidden" name="image_file" value="{{ image_file }}">
+                
+                <label>
+                    <input type="checkbox" name="is_incorrect" id="is_incorrect" onchange="toggleCommentBox()">
+                    Mark as Incorrect
+                </label>
+            
+                <div id="commentBox" style="display:none;">
+                    <label for="comment">Comment:</label>
+                    <textarea name="comment" id="comment"></textarea>
+                </div>
+            
+                <input type="submit" value="Submit">
+            </form>
         </div>
+              
         
     </section>
 
