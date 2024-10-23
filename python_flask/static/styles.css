@@ -40,7 +40,6 @@ section {
 /* การตกแต่งส่วน home */
 .home {
     width: 100%;
-    height: 100vh;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     align-items: center;
@@ -251,6 +250,9 @@ body {
     max-width: 100%; /* กำหนดขนาดกว้างสุด */
     overflow: hidden; /* ซ่อนส่วนที่เกินออกจากคอนเทนเนอร์ */
     margin: 0 auto; /* จัดให้อยู่ตรงกลาง */
+    display: flex;
+    flex-direction: column; /* จัดเรียงเนื้อหาในแนวตั้ง */
+    align-items: center; /* จัดกึ่งกลาง */
 }
 
 .result_image img {
@@ -292,4 +294,55 @@ body {
 .without-helmet {
     color: red; /* กำหนดสีแดงสำหรับคนไม่สวมหมวก */
     font-weight: bold;
+}
+
+.comment-section {
+    width: 80%; /* ให้ความกว้างเต็ม */
+    max-width: 600px; /* กำหนดความกว้างสูงสุด */
+    padding: 1rem; /* เพิ่ม padding สำหรับความสบายในการอ่าน */
+    background: linear-gradient(135deg, #ffffff93, #b1f4f493); /* ไล่สีฟ้าอ่อนไปสีขาว */
+    border-radius: 10px; /* เพิ่มความโค้งมุมให้กล่องคอมเมนต์ */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* เพิ่มเงา */
+}
+
+.comment-section h3 {
+    background: linear-gradient(135deg, #46A6FF, #7E3299);
+    -webkit-background-clip: text; /* ทำให้การไล่สีใช้กับตัวอักษร */
+    -webkit-text-fill-color: transparent; /* ทำให้พื้นหลังของตัวอักษรโปร่งใส */
+}
+
+
+
+/* การจัดการกับ commentBox */
+#commentBox {
+    max-height: 100px; /* ความสูงสูงสุดของกล่องความคิดเห็น */
+    overflow-y: auto; /* เพิ่มการเลื่อนเมื่อเนื้อหามากเกินไป */
+    max-width: 100%; /* ความกว้างสูงสุดของ commentBox */
+}
+
+/* ปรับ textarea */
+#comment {
+    width: 100%; /* ทำให้ textarea กว้างเต็มที่ */
+    max-width: 500px; /* กำหนดความกว้างสูงสุด */
+    height: 40px; /* กำหนดความสูง */
+    border-radius: 5px; /* เพิ่มความโค้งมุม */
+    border: 1px solid #ccc; /* เพิ่มขอบ */
+    resize: none; /* ปิดการปรับขนาด textarea */
+}
+
+/* การตกแต่งปุ่ม input[type="submit"] */
+.btn_submit input[type="submit"] {
+    background: linear-gradient(135deg, #46A6FF, #665AE8); /* ไล่สีจากฟ้าเข้มไปน้ำเงิน */
+    color: #ffffff; /* ข้อความสีขาว */
+    border: none; /* ไม่มีขอบ */
+    padding: 10px 16px; /* ขนาด padding */
+    border-radius: 8px; /* ความโค้งมุม */
+    font-size: 18px; /* ขนาดฟอนต์ */
+    cursor: pointer; /* แสดงว่าเป็นปุ่มที่คลิกได้ */
+    transition: background 0.3s ease; /* เอฟเฟกต์ hover */
+}
+
+/* เอฟเฟกต์เมื่อ hover บนปุ่ม */
+.btn_submit input[type="submit"]:hover {
+    background: linear-gradient(135deg, #e39709, #fd0000); /* เปลี่ยนสีเมื่อ hover */
 }
